@@ -102,3 +102,13 @@ When a user triggers account creation for the first time they'll receive a PM fr
 
 ### Removing Bot Messages
 When a user adds an emote incorrectly the bot sends a friendly reminder asking them to remove it. In order to make this process more friendly we bind to the "reaction_removed" event. This allows us to delete the message when the user has corrected the action.
+
+## FAQ
+### Can I still get reviews if I don't offer a bounty?
+Yes. This bot doesn't interfere with the current process it simply sits on top.
+
+### Is there any reporting or monitoring on those aren't doing as many reviews?
+No. We intentionally only record balances, individual transactions are not saved to the database. Leaderboards are also limited to the top 30% of users (a max of 10).  Even with full access to the database only the user's latest daily, weekly, monthly, yearly and all time balances are available. 
+
+### Is the bot limited to pull/merge requests?
+No. MRs are what I needed it for, but realistically it can probably be used for most slack based task workflows.

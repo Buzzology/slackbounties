@@ -1,0 +1,78 @@
+{
+    "type": "view_submission",
+    "team": {
+        "id": "T02JWLHH1K2",
+        "domain": "slackbountiestest"
+    },
+    "user": {
+        "id": "U02J70XKSRY",
+        "username": "christopher.owens",
+        "name": "christopher.owens",
+        "team_id": "T02JWLHH1K2"
+    },
+    "api_app_id": "A02JKKJ71PT",
+    "token": "56pvLOEzApJvGFFulQCwicdc",
+    "trigger_id": "2605213616615.2642697579648.dabb6782bbe5b142a5eed7d84670b608",
+    "view": {
+        "id": "V02JLER3QV7",
+        "team_id": "T02JWLHH1K2",
+        "type": "modal",
+        "blocks": [
+            {
+                "type": "input",
+                "block_id": "test-input",
+                "label": {
+                    "type": "plain_text",
+                    "text": "Pick a user to award the bounty to.",
+                    "emoji": false
+                },
+                "optional": false,
+                "dispatch_action": false,
+                "element": {
+                    "type": "users_select",
+                    "action_id": "award-bounty-user",
+                    "placeholder": {
+                        "type": "plain_text",
+                        "text": "Select a user",
+                        "emoji": true
+                    }
+                }
+            }
+        ],
+        "private_metadata": "TEST_MESSAGE_ID",
+        "callback_id": "award_bounty",
+        "state": {
+            "values": {
+                "test-input": {
+                    "award-bounty-user": {
+                        "type": "users_select",
+                        "selected_user": "U02J742TK6W"
+                    }
+                }
+            }
+        },
+        "hash": "1634623351.bbzxDTbi",
+        "title": {
+            "type": "plain_text",
+            "text": "Award a Bounty",
+            "emoji": true
+        },
+        "clear_on_close": false,
+        "notify_on_close": false,
+        "close": null,
+        "submit": {
+            "type": "plain_text",
+            "text": "Submit",
+            "emoji": true
+        },
+        "previous_view_id": null,
+        "root_view_id": "V02JLER3QV7",
+        "app_id": "A02JKKJ71PT",
+        "external_id": "",
+        "app_installed_team_id": "T02JWLHH1K2",
+        "bot_id": "B02JWMBFM88"
+    },
+    "response_urls": [],
+    "is_enterprise_install": false,
+    "enterprise": null
+}

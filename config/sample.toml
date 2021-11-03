@@ -1,0 +1,33 @@
+DbConnection = "root:@tcp(127.0.0.1:4306)/slack_bot?parseTime=true"
+ReleaseBountyReaction = "medal"
+TaskCompletedByMeReaction = "white_check_mark"
+DailyDecay = 2
+DocumentationUrl = "https://github.com/Buzzology/slackbounties"
+
+# NOTE: This is also re-used as starting balance when creating a new account.
+DailyIncome = 1
+
+[ApiConfig]
+Endpoint = "https://slack.com/api"
+Token = "xoxb-YOUR_SLACK_BOT_TOKEN_GOES_HERE"
+
+
+[[BoostReactions]]
+Emote = "dollar"
+BoostValue = 1
+
+[[BoostReactions]]
+Emote = "money_with_wings"
+BoostValue = 2
+
+[[BoostReactions]]
+Emote = "moneybag"
+BoostValue = 3
+
+[[BoostReactions]]
+Emote = "take_my_money"
+BoostValue = 4
+
+[[BoostReactions]]
+Emote = "moneyparrot"
+BoostValue = 5

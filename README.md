@@ -111,4 +111,4 @@ Yes. This bot doesn't interfere with the current process it simply sits on top.
 No. We intentionally only record balances, individual transactions are not saved to the database. Leaderboards are also limited to the top 30% of users (a max of 10).  Even with full access to the database only the user's latest daily, weekly, monthly, yearly and all time balances are available. 
 
 ### Is the bot limited to pull/merge requests?
-No. MRs are what I needed it for, but realistically it can probably be used for most slack based task workflows.
+No. MRs are what I needed it for but it can probably be used for most slack based task workflows.

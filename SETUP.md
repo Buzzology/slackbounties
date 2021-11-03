@@ -10,7 +10,7 @@ BountyReactionCost: The amount that will be deducted from the user's balance for
 AwardAmount: The amount that will be awarded to the reviewer for each `bounty` emote on the message.
 
 ## SlackApp creation
-- Copy manifest from existing app
+- Copy manifest from config/app_manifest.yml
 - Make slash commands urls https (revert after creating app)
 - Install to workplace
 - Set logo
@@ -54,6 +54,7 @@ unzip file.zip
 ```
 
 SSH Key: ~/.ssh/slackbounty
+
 ## Running
 - SSH into the box
 - Use screen: https://superuser.com/a/632219/124014

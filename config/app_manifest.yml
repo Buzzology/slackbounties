@@ -1,0 +1,64 @@
+# This is the manifest used to create the slack app.
+# - Replace the url values with your public endpoint. This is where the slack bot will be sending messages.
+# - Note that there currently appears to be a bug with add the slash commands so you may need to remove these and then add them manually.
+_metadata:
+  major_version: 1
+  minor_version: 1
+display_information:
+  name: Slack Bounties
+  description: Gamify tasks by awarding and earning bounties upon completion.
+  background_color: "#bf6702"
+features:
+  bot_user:
+    display_name: Code Review Test
+    always_online: true
+  shortcuts:
+    - name: Award Bounty
+      type: message
+      callback_id: award_bounty
+      description: Awards the bounty to the selected user.
+  slash_commands:
+    - command: /bountyme
+      url: http://<YOUR_URL>/slash_commands
+      description: Checking your slack bounty stats.
+      should_escape: false
+    - command: /bountyemotes
+      url: http://<YOUR_URL>/slash_commands
+      description: Check the emote setup
+      should_escape: false
+    - command: /bountydaily
+      url: http://<YOUR_URL>/slash_commands
+      description: Check the current leaderboard
+      should_escape: false
+    - command: /bountyweekly
+      url: http://<YOUR_URL>/slash_commands
+      description: Current weekly leaderboard
+      should_escape: false
+    - command: /bountyyearly
+      url: http://<YOUR_URL>/slash_commands
+      description: Current yearly leaderboard
+      should_escape: false
+    - command: /bountyalltime
+      url: http://<YOUR_URL>/slash_commands
+      description: All time leaderboard
+      should_escape: false
+oauth_config:
+  scopes:
+    bot:
+      - chat:write
+      - chat:write.customize
+      - commands
+      - incoming-webhook
+      - reactions:read
+settings:
+  event_subscriptions:
+    request_url: http://<YOUR_URL>
+    bot_events:
+      - reaction_added
+      - reaction_removed
+  interactivity:
+    is_enabled: true
+    request_url: http://<YOUR_URL>/interactions
+  org_deploy_enabled: false
+  socket_mode_enabled: false
+  token_rotation_enabled: false

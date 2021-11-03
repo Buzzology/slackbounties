@@ -14,7 +14,7 @@ This is a fairly typical flow for how the bounty process works.
 - Christopher adds a bounty of 1 using the :cash: emote
 - Someone else optionally  boosts the bounty by three using the :money_bag: emote
 - Once the task is complete, the completer requests to claim the bounty using the :check: emote
-  - Note that this step can be skipped by using the 'Award a Bounty' interaction described above
+  - Note that this step can be skipped by using the 'Award a Bounty' interaction described further below
 - Christopher awards the bounty using the :medal: emote
   - Note that the `Award a Bounty` interaction can also be used for this step
 

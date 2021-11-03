@@ -325,7 +325,8 @@ func (c *SlackApiClient) OpenView(
 
 	if !slackApiResponse.Ok {
 		c.log.WithFields(logrus.Fields{
-			"error": slackApiResponse.Error,
+			"error":   slackApiResponse.Error,
+			"message": slackApiResponse.Message,
 		}).Error("slack OpenView api message failed")
 		return nil, errors.Errorf("failed to OpenView: %v", slackApiResponse.Error)
 	}

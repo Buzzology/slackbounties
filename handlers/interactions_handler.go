@@ -6,6 +6,7 @@ import (
 	"net/http"
 
 	"github.com/buzzology/slack_bot/service/api"
+	"github.com/buzzology/slack_bot/types"
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
 )
@@ -109,7 +110,7 @@ func (h *SlackBotHandler) handleMessageAction(
 		return nil
 	}
 
-	// Define the view that we want to display for a modal.
+	// Define the generic view that we will display for the modal.
 	slackViewsOpenRequest := &api.SlackViewsOpenRequest{
 		TriggerId: interaction.TriggerId,
 		View: &api.SlackView{
@@ -120,28 +121,106 @@ func (h *SlackBotHandler) handleMessageAction(
 				Type: "plain_text",
 				Text: "Award a Bounty",
 			},
-			Submit: &api.SlackBlockSubmit{
-				Type: "plain_text",
-				Text: "Submit",
-			},
-			Blocks: []interface{}{
-				&api.SlackBlock{
-					Type:    "input",
-					BlockId: "award-bounty-user-id",
-					Element: &api.SlackBlockAccessory{
-						ActionId: "award-bounty-user",
-						Type:     "users_select",
-						Placeholder: &api.SlackBlock{
-							Type: "plain_text",
-							Text: "Select a user",
-						},
-					},
-					Label: &api.SlackBlockLabel{
-						Type:  "plain_text",
-						Text:  "Pick a user to award the bounty to.",
-						Emoji: false,
-					},
+		},
+	}
+
+	// Retrieve the message bounty.
+	messageBounties, _, err := h.messageBountiesRepo.List(
+		&types.ListMessageBountiesFilter{
+			MessageId: interaction.MessageTs,
+			ChannelId: interaction.Channel.Id,
+		},
+		1,
+		"",
+	)
+	if err != nil {
+		h.log.WithFields(logrus.Fields{
+			"message_id": interaction.MessageTs,
+			"channel_id": interaction.Channel.Id,
+		}).WithError(err).Error("Failed to retrieve message bounties")
+		return errors.New("Failed to retrieve message bounties")
+	}
+
+	// Check if there is a message bounty.
+	if len(messageBounties) == 0 {
+		slackViewsOpenRequest.View.Blocks = []interface{}{
+			&api.SlackBlock{
+				Type: "section",
+				Text: &api.SlackBlockText{
+					Type: "mrkdwn",
+					Text: "There is currently no bounty on this message to award.",
 				},
+			},
+		}
+
+		if _, err := h.apiClient.OpenView(ctx, slackViewsOpenRequest); err != nil {
+			return errors.Wrap(err, "Failed to open the no bounty modal when awarding a bounty.")
+		}
+
+		return nil
+	}
+
+	var messageBounty = messageBounties[0]
+
+	// Ensure that this user is the message owner.
+	if messageBounty.UserId != interaction.User.Id {
+		slackViewsOpenRequest.View.Blocks = []interface{}{
+			&api.SlackBlock{
+				Type: "section",
+				Text: &api.SlackBlockText{
+					Type: "mrkdwn",
+					Text: "Only the message creator can award the bounty.",
+				},
+			},
+		}
+
+		if _, err := h.apiClient.OpenView(ctx, slackViewsOpenRequest); err != nil {
+			return errors.Wrap(err, "Failed to open the not message creator modal when awarding a bounty.")
+		}
+
+		return nil
+	}
+
+	// Ensure that the bounty hasn't already been awarded.
+	if messageBounty.Status > 1 {
+		slackViewsOpenRequest.View.Blocks = []interface{}{
+			&api.SlackBlock{
+				Type: "section",
+				Text: &api.SlackBlockText{
+					Type: "mrkdwn",
+					Text: "This bounty has already been awarded.",
+				},
+			},
+		}
+
+		if _, err := h.apiClient.OpenView(ctx, slackViewsOpenRequest); err != nil {
+			return errors.Wrap(err, "Failed to open the already awarded modal when awarding a bounty.")
+		}
+
+		return nil
+	}
+
+	// It should be fine to award the bounty if all previous validation is complete.
+	slackViewsOpenRequest.View.Submit = &api.SlackBlockSubmit{
+		Type: "plain_text",
+		Text: "Submit",
+	}
+	slackViewsOpenRequest.View.Blocks = []interface{}{
+		&api.SlackBlock{
+			Type:    "input",
+			BlockId: "award-bounty-user-id",
+			Element: &api.SlackBlockAccessory{
+				ActionId: "award-bounty-user",
+				Type:     "users_select",
+				Placeholder: &api.SlackBlock{
+					Type: "plain_text",
+					Text: "Select a user",
+				},
+			},
+			Label: &api.SlackBlockLabel{
+				Type:  "plain_text",
+				Text:  "Pick a user to award the bounty to.",
+				Emoji: false,
 			},
 		},
 	}

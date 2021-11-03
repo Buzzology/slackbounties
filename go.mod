@@ -23,6 +23,8 @@ require (
 	github.com/grpc-ecosystem/go-grpc-prometheus v1.2.0 // indirect
 	github.com/joho/godotenv v1.4.0 // indirect
 	github.com/jonboulle/clockwork v0.1.0 // indirect
+	github.com/nats-io/gnatsd v1.4.1 // indirect
+	github.com/nats-io/nuid v1.0.1 // indirect
 	github.com/prometheus/client_golang v0.9.3 // indirect
 	github.com/smartystreets/goconvey v1.6.4 // indirect
 	github.com/soheilhy/cmux v0.1.4 // indirect

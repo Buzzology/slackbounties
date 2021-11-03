@@ -41,6 +41,11 @@ type SlackBlockSubmit struct {
 	Text interface{} `json:"text,omitempty"`
 }
 
+type SlackBlockText struct {
+	Type string `json:"type"`
+	Text string `json:"text,omitempty"`
+}
+
 // Create this i think: https://api.slack.com/reference/block-kit/block-elements#users_select__example
 // [
 //   {

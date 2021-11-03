@@ -110,5 +110,12 @@ Yes. This bot doesn't interfere with the current process it simply sits on top.
 ### Is there any reporting or monitoring on those aren't doing as many reviews?
 No. We intentionally only record balances, individual transactions are not saved to the database. Leaderboards are also limited to the top 30% of users (a max of 10).  Even with full access to the database only the user's latest daily, weekly, monthly, yearly and all time balances are available. 
 
+### What permissions does the bot use? I don't want it to see messages.
+The bot uses the minimum permissions required to interact with the channel. It does not have access to any of the channel's messages and only stores reference ids in the database. You can view the manifest for the full details but the main ones are as follows:
+- Write messages to a channel
+- Sending private messages
+- Seeing when a reaction is added
+- Seeing when a reaction is removed
+
 ### Is the bot limited to pull/merge requests?
 No. MRs are what I needed it for but it can probably be used for most slack based task workflows.

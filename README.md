@@ -117,5 +117,5 @@ The bot uses the minimum permissions required to interact with the channel. It d
 - Seeing when a reaction is added
 - Seeing when a reaction is removed
 
-### Is the bot limited to pull/merge requests?
-No. MRs are what I needed it for but it can probably be used for most slack based task workflows.
+### Can the bot be used for anything other than merge/pull requests?
+Definitely! MRs are what I needed it for but it can probably be used for most slack based tasks as well.

@@ -87,7 +87,7 @@ Clicking `Submit` will award the bounty (if eligible) to the target user.
 While most of the bot is driven through emotes, slash commands and interactions there are still a number of components that rely on background processing.
 
 ### Leaderboards
-At the end of each interval (daily, weekly, yearly) a leaderboard will automatically be posed to each channel using the bot. These leaderboards are currently identical to those that are accessible via the slash commands except for the fact that they are shown to the whole channel and not just the active user.
+At the end of each interval (daily, weekly, yearly) a leaderboard will automatically be posted to each channel using the bot. These leaderboards are currently identical to those that are accessible via the slash commands except for the fact that they are shown to the whole channel and not just the active user.
 
 ### Decay and Income
 On each daily reset a decay and income is applied to all accounts. The decay is used to prevent hoarding and to ensure that there's a reason for people to remain active. The income is applied as a slight balance increase immediately after the decay. The current configuration applies a decay of 2 and an income of 1 but this values are very likely to change as we get more feedback.
@@ -107,7 +107,7 @@ When a user adds an emote incorrectly the bot sends a friendly reminder asking t
 ### Can I still get reviews if I don't offer a bounty?
 Yes. This bot doesn't interfere with the current process it simply sits on top.
 
-### Is there any reporting or monitoring on those aren't doing as many reviews?
+### Is there any reporting or monitoring on those that aren't doing as many reviews?
 No. We intentionally only record balances, individual transactions are not saved to the database. Leaderboards are also limited to the top 30% of users (a max of 10).  Even with full access to the database only the user's latest daily, weekly, monthly, yearly and all time balances are available. 
 
 ### What permissions does the bot use? I don't want it to see messages.

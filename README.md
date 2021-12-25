@@ -77,12 +77,6 @@ Once that interaction context menu has been clicked it will open a modal allowin
 
 Clicking `Submit` will award the bounty (if eligible) to the target user.
 
-**Future Enhancements to the Award Bounty Modal**  
-- Add validation when displaying the initial view
-  - If user is not the owner of the message show an error with a close button
-  - If there is no bounty on the message show an error with a close button 
-  - If the bounty has already been awarded show an error with a close button
-
 ## Background Functionality
 While most of the bot is driven through emotes, slash commands and interactions there are still a number of components that rely on background processing.
 

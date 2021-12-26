@@ -71,7 +71,7 @@ This interaction allows the user to award a message's bounty to a specific user 
 
 ![Slack Bounties Header](docs/award_a_bounty_interaction_1.png)
 
-Once that interaction context menu has been clicked it will open a modal allowing for the message's bounty to be awarded.
+Once the interaction context menu has been clicked it will open a modal allowing for the message's bounty to be awarded.
 
 ![Slack Bounties Header](docs/award_a_bounty_interaction_2.png)
 
